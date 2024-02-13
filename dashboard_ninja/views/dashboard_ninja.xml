@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- Copyright 2023 Dixmit
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+<odoo>
+
+    <record model="ir.ui.view" id="dashboard_ninja_form_view">
+        <field name="name">dashboard.ninja.form (in dashboard_ninja)</field>
+        <field name="model">dashboard.ninja</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button name="open_dashboard" string="Open" type="object" />
+                </header>
+                <sheet>
+                    <!-- TODO -->
+                    <group>
+                        <field name="name" />
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="dashboard_ninja_search_view">
+        <field name="name">dashboard.ninja.search (in dashboard_ninja)</field>
+        <field name="model">dashboard.ninja</field>
+        <field name="arch" type="xml">
+            <search>
+                <!-- TODO -->
+            </search>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="dashboard_ninja_tree_view">
+        <field name="name">dashboard.ninja.tree (in dashboard_ninja)</field>
+        <field name="model">dashboard.ninja</field>
+        <field name="arch" type="xml">
+            <tree>
+                <!-- TODO -->
+                <field name="name" />
+            </tree>
+        </field>
+    </record>
+
+    <record model="ir.actions.act_window" id="dashboard_ninja_act_window">
+        <field name="name">Dashboard Ninja</field> <!-- TODO -->
+        <field name="res_model">dashboard.ninja</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <record model="ir.ui.menu" id="dashboard_ninja_menu">
+        <field name="name">Dashboard Ninja</field>
+        <field
+            name="parent_id"
+            ref="spreadsheet_dashboard.spreadsheet_dashboard_menu_root"
+        /> <!-- TODO -->
+        <field name="action" ref="dashboard_ninja_act_window" />
+        <field name="sequence" eval="16" /> <!-- TODO -->
+    </record>
+
+</odoo>

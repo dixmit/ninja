@@ -1,0 +1,73 @@
+$dashboard_columns: 12 !default;
+
+.o_dashboard_ninja_container {
+    height: 100%;
+    .odn-#{$dashboard_columns} {
+        position: relative;
+        height: 100%;
+
+        > .o_dashboard_item {
+            .o_dashboard_item_content {
+                border-radius: 0.25rem;
+                background-color: $primary;
+                margin: 0.1rem;
+                width: calc(100% - 10px);
+                height: calc(100% - 10px);
+            }
+            position: absolute;
+            overflow: auto;
+            top: 0px;
+            left: 0%;
+            width: calc(100% / #{$dashboard_columns});
+            @for $i from 1 through ($dashboard_columns - 1) {
+                &[odn-x="#{$i}"] {
+                    left: calc(100% / #{$dashboard_columns} * #{$i});
+                }
+                &[odn-w="#{$i + 1}"] {
+                    width: calc(100% / #{$dashboard_columns} * (#{$i + 1}));
+                }
+            }
+            .o_dashboard_item_bottom {
+                bottom: 0;
+                left: calc(50% - 1.75rem);
+                position: absolute;
+
+                .o_dashboard_item_icon {
+                    border: 1px solid $primary;
+                    padding: 0.2rem;
+                    color: $primary;
+                    background-color: $o-view-background-color;
+                    margin-right: 0.1rem;
+                    margin-left: 0.1rem;
+                }
+            }
+
+            &[odn-h="1"] {
+                .o_dashboard_item_bottom {
+                    left: calc(50% - 0.875rem);
+                }
+            }
+            .o_dashboard_item_right {
+                bottom: calc(50% - 1.75rem);
+                right: 0;
+                position: absolute;
+                width: 1.42rem;
+
+                .o_dashboard_item_icon {
+                    border: 1px solid $primary;
+                    padding: 0.2rem;
+                    color: $primary;
+                    background-color: $o-view-background-color;
+                    margin-top: 0.1rem;
+                    margin-bottom: 0.1rem;
+                }
+            }
+
+            &[odn-w="1"] {
+                .o_dashboard_item_right {
+                    bottom: calc(50% - 0.875rem);
+                }
+            }
+        }
+    }
+}

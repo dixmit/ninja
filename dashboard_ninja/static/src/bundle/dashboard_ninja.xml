@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="dashboard_ninja.ActionDashboardNinja" owl="1">
+        <div class="o_dashboard_ninja_container">
+            <DashboardNinjaHeader />
+            <div class="odn-12" t-ref="root">
+                <t
+                    t-foreach="Object.entries(data.info.data)"
+                    t-as="record"
+                    t-key="record[0]"
+                >
+                    <ActionDashboardNinjaComponent
+                        record="record[1]"
+                        recordId="record[0]"
+                    />
+                </t>
+            </div>
+        </div>
+    </t>
+
+
+    <t t-name="dashboard_ninja.ActionDashboardNinjaComponent" owl="1">
+        <div
+            t-attf-class="o_dashboard_item ${this.state.draggable} "
+            t-att-id="props.recordId"
+            t-att-odn-x="state.x"
+            t-att-odn-w="state.width"
+            t-att-odn-h="state.realHeight"
+            t-attf-style="height: ${this.state.height}px; top: ${this.state.y}px;"
+            t-ref="item"
+        >
+            <div class="o_dashboard_item_content" />
+            <div class="o_dashboard_item_bottom">
+
+                <i
+                    class="fa fa-plus o_dashboard_item_icon"
+                    t-on-click="increaseHeight"
+                />
+                <i
+                    class="fa fa-minus o_dashboard_item_icon"
+                    t-on-click="decreaseHeight"
+                    t-if="state.realHeight > 1"
+                />
+            </div>
+            <div class="o_dashboard_item_right">
+
+                <div
+                    class="fa fa-plus o_dashboard_item_icon"
+                    t-on-click="increaseWidth"
+                />
+                <div
+                    class="fa fa-minus o_dashboard_item_icon"
+                    t-on-click="decreaseWidth"
+                    t-if="state.width > 1"
+                />
+            </div>
+        </div>
+    </t>
+
+
+    <t t-name="dashboard_ninja.DashboardNinjaHeader" owl="1">
+        <div class="o_dashboard_ninja_header"><button
+                t-on-click="add_item"
+            >Add</button><button t-on-click="save">Save</button></div>
+    </t>
+</templates>
